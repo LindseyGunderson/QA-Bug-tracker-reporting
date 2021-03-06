@@ -21,7 +21,7 @@
 
 
   <!-- Sign Up Form -->
-  <div class="container"> 
+  <!-- <div class="container"> 
             <div class="row justify-content-center">
                 <div class="col-6">        
                     <div class="card mb-5 mt-5">
@@ -46,7 +46,7 @@
                     </div>
                 </div>
             </div>    
-    </div>
+    </div> -->
  <!-- End of Sign Up Form -->
 
 
@@ -59,12 +59,12 @@
 
             <div class="row">
                 <div class="col-md-6">
-                    <form id="noteForm" action="app/insert.php" method="POST">
+                    <form id="bugForm" action="app/insert.php" method="POST">
                         <div class="form-group">
 
                         <!-- Form Category -->
                             <label for="cat">Severity</label>
-                            <select class="form-control" name="cat" id="cat">
+                            <select class="form-control" name="severity" id="severity">
                                 <option value="1">Low</option>
                                 <option value="2">Moderate</option>
                                 <option value="3">High</option>
@@ -73,7 +73,7 @@
 
                             <!-- Form note title -->
                             <div class="form-group">
-                                <label for="noteTitle">Bug Title</label>
+                                <label for="bugTitle">Bug Title</label>
                                 <input type="text" class="form-control" id="bugTitle" name="bugTitle">
                             </div>
                                 
