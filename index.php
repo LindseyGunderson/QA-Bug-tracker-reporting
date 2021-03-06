@@ -52,7 +52,7 @@
 
     <!-- Page Content -->
     <div class="container"> 
-            <h1 class="mt-5 mb-5">Current Bugs</h1>
+            <h1 class="mt-5 mb-5">Bug Report</h1>
 
             <!-- Create New Notes -->
             <h2 class="mt-5 mb-5">Add New Bug</h2>
@@ -64,7 +64,7 @@
 
                         <!-- Form Category -->
                             <label for="cat">Severity</label>
-                            <select class="form-control" name="severity" id="severity">
+                            <select class="form-control" name="bugSeverity" id="bugSeverity">
                                 <option value="1">Low</option>
                                 <option value="2">Moderate</option>
                                 <option value="3">High</option>
@@ -88,7 +88,7 @@
                                     <!-- Form due date -->
                                     <div class="form-group col-md-6">
                                         <label for="date">Date</label>
-                                        <input class="form-control" type="bugDate" id="bugDate" name="bugDate">
+                                        <input class="form-control" type="date" id="bugDate" name="bugDate">
                                     </div>
 
                                     <div class="form-group col-md-6">
