@@ -112,7 +112,8 @@
 
             <!-- SELECT all active Bugs for the logged in user -->
             <?php
-                $sql = 'SELECT * FROM bug_reports';
+                $sql = 'SELECT * FROM bug_reports
+                            WHERE bug_status = 0';
 
                 // prepare the statement
                 $stmt = $mysqli->prepare($sql);
@@ -122,28 +123,11 @@
                 $result = $stmt->get_result();
 
 
-                // $sqlCount = "SELECT COUNT(comment_bug_id), comment_id 
-                //                 FROM bug_comments
-                //                 GROUP BY comment_id";
-
-
-                // // prepare the statement
-                // $stmtNew = $mysqli->prepare($sqlCount);
-
-                // $stmtNew->execute();
-
-                // $counts = $stmtNew->get_result();
-
-                // while($countRows = $counts->fetch_assoc()){
-
-                //     var_dump($countRows);
-                // }
-
              ?>
 
             
             <!-- Display Active Bugs with bootstrap -->
-            <h2 class="mt-5 mb-5">Open Bugs</h2>
+            <h2 class="mt-5 mb-5">Open Bugs Issues</h2>
             <div class="row mb-6">
 
             <?php      while($row = $result->fetch_assoc()) : ?>
