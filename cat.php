@@ -85,7 +85,7 @@
                             <p class="card-title" style="padding-top: 1rem;"><strong>Date: </strong><?php echo  h($row['bug_created_date']) ?>
 
                             <!-- Display the number of comments attached to the open bug -->
-                            <?php echo '<a class="float-right" href="view.php?id='. h($row['bug_id']).'" style="padding-top:0"> 0 Comment</a></p>'; ?>
+                            <?php echo '<a class="float-right" href="view.php?id='. h($row['bug_id']).'" style="padding-top:0"> Add Comments</a></p>'; ?>
 
                         </div>
                     </div>

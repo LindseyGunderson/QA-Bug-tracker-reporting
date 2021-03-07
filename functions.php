@@ -61,5 +61,53 @@
 
     }
 
+ // custom fuction for displaying error or success messages
+ function lg_msgs($message){
+
+    switch ($message) {
+        case "loginErrorEmpty":
+            echo 'Error: Please enter both your username and password to log in.';
+            break;
+
+        case "loginErrorMismatch":
+            echo 'Error: Incorrect username or password, please try again.';
+            break;
+
+        case "loginSuccess":
+            echo 'Login Success: Good luck on all your notes and get them done!';
+            break;
+
+        case "errorSignUpEmptyFields":
+            echo 'Error: Please fill in all fields to sign up';
+            break;
+
+        case "errorSignUpInvalidEmail":
+            echo 'Error: Please add a valid email';
+            break;
+
+        case "errorSignupPasswordMismatch":
+            echo 'Error: Passwords must match';
+            break;
+
+        case "errorSignupUserExists":
+            echo 'Error: User already exists';
+            break;
+
+        case "signupSuccess":
+            echo 'Account created: Please login';
+            break;
+            
+        case "1":
+        case "2":
+        case "3":
+            echo 'Error: Please sign up or login to view notes';
+            break;
+
+    default:
+        
+    }
+
+}
+
 
     ?>

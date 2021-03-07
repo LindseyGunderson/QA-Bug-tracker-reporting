@@ -13,7 +13,6 @@
           //Prepare SQL query for update, update the status where it is equal to the note_id
         $sql = 'UPDATE bug_reports SET bug_status = 0 WHERE bug_id = ?';
 
-    $stmt->execute();
         $stmt = $mysqli->prepare($sql);
 
         //Bind parameters to be updated into database

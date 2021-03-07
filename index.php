@@ -18,10 +18,44 @@
 <!-- End Navigation -->
 
 
+<?php 
+    // Print an error message to the user if the login is unsuccessful
+    if(isset($_GET['msg'])): ?>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="alert <?php if($_GET['msg'] == 'signupSuccess' || $_GET['msg'] == 'loginSuccess')
+                    { 
+                        echo 'alert-success'; 
+
+                    } else 
+                    
+                    { 
+                        echo 'alert-warning'; 
+
+                    } ?> mt-5">
+                        <?php  
+
+                            // custom function to print messages to screen
+                            lg_msgs($_GET['msg']);
+
+                        ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
+
+
+
+
+
+<!-- Show the sign up form, if the user is not logged in -->
+ <?php   if(!isset($_SESSION['user_id'])):  ?>
 
 
   <!-- Sign Up Form -->
-  <!-- <div class="container"> 
+  <div class="container"> 
             <div class="row justify-content-center">
                 <div class="col-6">        
                     <div class="card mb-5 mt-5">
@@ -46,9 +80,10 @@
                     </div>
                 </div>
             </div>    
-    </div> -->
- <!-- End of Sign Up Form -->
+        </div>
 
+<!-- if the user is logged in, show the bug list -->
+        <?php else: ?>
 
     <!-- Page Content -->
     <div class="container"> 
@@ -124,8 +159,8 @@
         
                 $result = $stmt->get_result();
 
-
              ?>
+
 
             
             <!-- Display Active Bugs with bootstrap -->
@@ -154,7 +189,7 @@
                             <p class="card-title" style="padding-top: 1rem; "><strong>Date: </strong><?php echo  h($row['bug_created_date']) ?>
 
                             <!-- Display the number of comments attached to the open bug -->
-                            <?php echo '<a class="float-right" href="view.php?id='. h($row['bug_id']).'"> 0 Comment</a></p>'; ?>
+                            <?php echo '<a class="float-right" href="view.php?id='. h($row['bug_id']).'"> Add Comments</a></p>'; ?>
 
                         </div>
                     </div>
@@ -163,7 +198,7 @@
 
             </div>
             <!-- End active notes -->
-
+    <?php endif; ?>   
 
                     <!-- include footer -->
     <?php include('./partials/footer.php'); ?>
