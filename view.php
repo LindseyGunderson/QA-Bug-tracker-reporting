@@ -12,8 +12,6 @@
         require_once('partials/nav.php');
         //  End Navigation -->
 
-        var_dump($_GET);
-
         $today = date("Y-m-d");  
 
     // Check if the ID param in the URL exists
@@ -22,9 +20,9 @@
         exit('No ID specified!');
     }
 
-        //Prepare SQL query for update, update the status where it is equal to the note_id
-        $sql = "SELECT * FROM bug_reports 
-                    WHERE bug_id = ?";
+        //Select the bug issue based on the ID
+        $sql = "SELECT * FROM bug_reports
+                   WHERE bug_id = ?";
 
         $stmt = $mysqli->prepare($sql);
     
@@ -35,8 +33,31 @@
         $stmt->execute();
 
         $result = $stmt->get_result();
+
     
         ?>
+
+    <?php         
+    
+            $sql = "SELECT * FROM bug_reports
+                    JOIN bug_comments
+                    ON bug_reports.bug_id = bug_comments.comment_bug_id
+                    WHERE bug_id 
+                        AND comment_bug_id = ?";
+
+                    $stmt = $mysqli->prepare($sql);
+                        
+                    //Bind parameters to be updated into database
+                    $stmt->bind_param('i', $_GET['id']);
+
+                    //Execute the query and update entry in database
+                    $stmt->execute();
+
+                    $comments = $stmt->get_result();
+
+
+
+    ?>
 
 <div class="container"> 
         <h2 class="mt-5 mb-5">Bug Issue # </h2>
@@ -44,7 +65,7 @@
 
         <?php      while($row = $result->fetch_assoc()) : ?>
 
-            <div class="col-md-8 ">
+            <div class="col-md-10">
                 <div class="card">
                     <div class="card-body border-success">
 
@@ -55,7 +76,7 @@
                         <!-- <h3 class="card-header"><?php echo h($row['bug_severity']) ?></h3> -->
 
                         <!-- Display the title for the active notes -->
-                        <h3 class="card-header "><?php echo h($row['bug_title']) ?> </h3>
+                        <div class="card-header"><h3 ><?php echo h($row['bug_title']) ?> </h3></div>
 
                         <!-- Display the date for the active notes -->
                         <p class="card-title "><strong>Date: </strong><?php echo  h($row['bug_created_date']) ?></p>
@@ -65,29 +86,50 @@
                     </div>
                 </div>
             </div>      
-        
+            <?php endwhile; /// ends DB results loop ?>
     </div>
 
         <h5 class="mt-5 mb-5">Post Comment</h5>
 
-<div class="row">
-    <div class="col-md-6">
-        <form id="commentForm" action="app/insert.php" method="POST">
-                    
-                    <!-- Form note description -->
-                    <div class="form-group">
-                        <input type="hidden" name="currentDate" value="<?php echo $today?>" readonly="readonly">
-                        <input type="hidden" name="id" value="<?php echo h($row['bug_id']) ?>">
-                        <textarea class="form-control" name="commentMsg" id="commentMsg" placeholder="Enter your comment..."></textarea>
-                    </div>
-                    
-                    <div class="row">
-                        <button type="submit" class="btn btn-primary">Add New Bug</button>
-                    </div>
-                <!-- Submit button -->
-                
-        </form>
-        </div>
-</div>
+        <?php      
+            if (mysqli_num_rows($comments) !== 0) {
 
-<?php endwhile; /// ends DB results loop ?>
+                while($row = $comments->fetch_assoc()) : ?>
+
+                <div class="comment card-body">
+                    <div class="card-body">
+                        <div>
+                        <h6><i class="fa fa-comment" style="font-size:32px;color:#cad7e3"></i><span class="card-title text-muted" style="padding-left: 1rem;"><?php echo h($row['comment_date_created'])?></span></h6>
+                        <p class="card-text">
+                            
+                            <?php echo h($row['comment_msg'])?>
+                        </p>
+                        </div>
+                    </div>
+
+                    </div>
+
+
+                    <?php  
+                endwhile; /// ends DB results loop
+            } ?>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <form id="commentForm" action="app/insert.php" method="POST">
+                                
+                                <!-- Form note description -->
+                                <div class="form-group">
+                                    <input type="hidden" name="currentDate" value="<?php echo $today?>" readonly="readonly">
+                                    <input type="hidden" name="id" value="<?php echo h($row['bug_id']) ?>">
+                                    <textarea class="form-control" name="commentMsg" id="commentMsg" placeholder="Enter your comment..."></textarea>
+                                </div>
+                                
+                                <div class="row">
+                                    <button type="submit" class="btn btn-primary">Add New Comment</button>
+                                </div>
+                            <!-- Submit button -->
+                            
+                    </form>
+                    </div>
+            </div>
