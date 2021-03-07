@@ -113,7 +113,9 @@
             <!-- SELECT all active Bugs for the logged in user -->
             <?php
                 $sql = 'SELECT * FROM bug_reports
-                            WHERE bug_status = 0';
+                            WHERE bug_status = 0
+                            ORDER BY bug_created_date DESC
+                            LIMIT 4';
 
                 // prepare the statement
                 $stmt = $mysqli->prepare($sql);
@@ -127,7 +129,7 @@
 
             
             <!-- Display Active Bugs with bootstrap -->
-            <h2 class="mt-5 mb-5">Open Bugs Issues</h2>
+            <h2 class="mt-5 mb-5">Recently Added Issues</h2>
             <div class="row mb-6">
 
             <?php      while($row = $result->fetch_assoc()) : ?>
@@ -136,21 +138,23 @@
                     <div class="card mb-5 ">
                         <div class="card-body border-success">
 
-                            <!-- Archive button connected to the ID once clicked -->
+                            <!-- Resolve button connected to the ID once clicked -->
                             <?php echo '<a class="float-right btn btn-info  " href="app/complete.php?id='. h($row['bug_id']).'">Resolve</a>'; ?>
 
-                            <!-- Display the category for active notes -->
-                            <!-- <h3 class="card-header"><?php echo h($row['bug_severity']) ?></h3> -->
+                            <!-- Display the issue number of the bug -->
+                            <p class="text-dark" style="font-weight: bold;">Issue # <?php echo  h($row['bug_id']) ?>
+                            <span class="badge bg-success text-light" style="padding: 0.5rem; margin-left: 0.5rem; font-size: 0.8rem;">Low Severity</span></p>
 
-                            <!-- Display the title for the active notes -->
+                            <!-- Display the title for the open bug -->
                             <h3 class="card-header "><?php echo h($row['bug_title']) ?> </h3>
+                            
 
-                            <!-- Display the date for the active notes -->
-                            <p class="card-title "><strong>Date: </strong><?php echo  h($row['bug_created_date']) ?></p>
+                            <!-- Display the date for the bug date -->
+                            <p class="card-title" style="padding-top: 1rem; "><strong>Date: </strong><?php echo  h($row['bug_created_date']) ?>
 
-                            <!-- Display the note text for the active notes -->
-                            <!-- <p class="text-dark"><?php echo h($row['bug_note']) ?></p> -->
-                            <?php echo '<a class="float-right" href="view.php?id='. h($row['bug_id']).'"> 0 Comment</a>'; ?>
+                            <!-- Display the number of comments attached to the open bug -->
+                            <?php echo '<a class="float-right" href="view.php?id='. h($row['bug_id']).'"> 0 Comment</a></p>'; ?>
+
                         </div>
                     </div>
                 </div>      

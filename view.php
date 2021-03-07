@@ -60,7 +60,7 @@
     ?>
 
 <div class="container"> 
-        <h2 class="mt-5 mb-5">Bug Issue # </h2>
+        <h2 class="mt-5 mb-5">Bug Issue # <?php echo $_GET['id'] ?></h2>
         <div class="row mb-6">
 
         <?php      while($row = $result->fetch_assoc()) : ?>
@@ -89,9 +89,8 @@
             <?php endwhile; /// ends DB results loop ?>
     </div>
 
-        <h5 class="mt-5 mb-5">Post Comment</h5>
 
-        <?php      
+    <?php      
             if (mysqli_num_rows($comments) !== 0) {
 
                 while($row = $comments->fetch_assoc()) : ?>
@@ -100,7 +99,7 @@
                     <div class="card-body">
                         <div>
                         <h6><i class="fa fa-comment" style="font-size:32px;color:#cad7e3"></i><span class="card-title text-muted" style="padding-left: 1rem;"><?php echo h($row['comment_date_created'])?></span></h6>
-                        <p class="card-text">
+                        <p class="accordion-body" style="font-weight:bold;">
                             
                             <?php echo h($row['comment_msg'])?>
                         </p>
@@ -113,6 +112,10 @@
                     <?php  
                 endwhile; /// ends DB results loop
             } ?>
+
+        <h5 class="mt-5 mb-5">Post Comment</h5>
+
+       
 
             <div class="row">
                 <div class="col-md-4">
