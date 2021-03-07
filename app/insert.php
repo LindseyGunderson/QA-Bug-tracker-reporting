@@ -6,8 +6,10 @@
     //include connection to DB from separate file
     require_once('connect.php');
 
-    var_dump($_POST);
 
+   if(isset($_POST['newBug'])){
+
+        // var_dump($_POST);
 
         //define variables for $_POST
         $bug_severity = $_POST['bugSeverity'];
@@ -28,7 +30,37 @@
         //Execute the query and inserted into database
         $stmt->execute();
 
+        
         ///redirect to main page with constant defined in connect.php
         header('Location: ' . SITE_URL);
+
+    }
+
+
+        if (isset($_POST['commentMsg']) && !empty($_POST['commentMsg'])) {
+        
+            var_dump($_POST);
+
+            //define variables for $_POST
+            $comment_bug_id = $_POST['id'];
+            $comment_msg = $_POST['commentMsg'];
+            $comment_date = $_POST['currentDate'];
+
+
+            // //Prepare SQL query for insert
+            $sql = 'INSERT INTO bug_comments(comment_bug_id, comment_msg, comment_date_created) VALUES (?, ?, ?)';
+
+            $stmt = $mysqli->prepare($sql);
+
+            //Bind parameters to be inserted into database
+            $stmt->bind_param('iss', $comment_bug_id, $comment_msg, $comment_date);
+
+            //Execute the query and inserted into database
+            $stmt->execute();
+
+            header('Location: ' . SITE_URL .'view.php?id=' . $_POST['id']);
+
+        }
+
 
 ?>

@@ -102,13 +102,60 @@
                                     </div>
                                 </div>
                             <!-- Submit button -->
-                            <button type="submit" class="btn btn-primary">Add New Bug</button>
+                            <button type="submit" class="btn btn-primary" name="newBug">Add New Bug</button>
                     </form>
                     </div>
                 </div>
-            </div>
 
-        </div>
+         <!-- End of form contents -->
+
+
+            <!-- SELECT all active Bugs for the logged in user -->
+            <?php
+                $sql = 'SELECT * FROM bug_reports';
+
+                // prepare the statement
+                $stmt = $mysqli->prepare($sql);
+
+                $stmt->execute();
+        
+                $result = $stmt->get_result();
+
+
+             ?>
+
+            <!-- Display Active Bugs with bootstrap -->
+            <h2 class="mt-5 mb-5">Open Bugs</h2>
+            <div class="row mb-6">
+
+            <?php      while($row = $result->fetch_assoc()) : ?>
+
+                <div class="col-md-6 ">
+                    <div class="card mb-5 ">
+                        <div class="card-body border-success">
+
+                            <!-- Archive button connected to the ID once clicked -->
+                            <?php echo '<a class="float-right btn btn-info  " href="app/complete.php?id='. h($row['bug_id']).'">Resolve</a>'; ?>
+
+                            <!-- Display the category for active notes -->
+                            <!-- <h3 class="card-header"><?php echo h($row['bug_severity']) ?></h3> -->
+
+                            <!-- Display the title for the active notes -->
+                            <h3 class="card-header "><?php echo h($row['bug_title']) ?> </h3>
+
+                            <!-- Display the date for the active notes -->
+                            <p class="card-title "><strong>Date: </strong><?php echo  h($row['bug_created_date']) ?></p>
+
+                            <!-- Display the note text for the active notes -->
+                            <!-- <p class="text-dark"><?php echo h($row['bug_note']) ?></p> -->
+                            <?php echo '<a class="float-right" href="view.php?id='. h($row['bug_id']).'"> 0 Comment</a>'; ?>
+                        </div>
+                    </div>
+                </div>      
+                <?php endwhile; /// ends DB results loop ?>
+
+            </div>
+            <!-- End active notes -->
 
 
                     <!-- include footer -->
