@@ -65,7 +65,13 @@
                         <div class="card-body border-success">
 
                             <!-- Resolve button connected to the ID once clicked -->
-                            <?php echo '<a class="float-right btn btn-info  " href="app/complete.php?id='. h($row['bug_id']).'">Resolve</a>'; ?>
+                            <?php if($_GET['cat_id'] == 0) : echo '<a name="resolve" class="float-right btn btn-info  " href="app/complete.php?id='. h($row['bug_id']).'" >Resolve</a>';
+                                    
+                                    else:
+                                    
+                                    echo '<a name="reopen" class="float-right btn btn-danger" href="app/complete.php?status=reopen&id='. h($row['bug_id']).'" >Re-Open</a>';
+                                    endif;
+                            ?>
 
                              <!-- Display the issue number of the bug -->
                              <p class="text-dark" style="font-weight: bold;">Issue # <?php echo  h($row['bug_id']) ?>
