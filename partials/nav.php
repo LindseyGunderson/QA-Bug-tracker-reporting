@@ -1,10 +1,36 @@
 <!-- Nav bar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand h1 mb-0" href="<?php echo SITE_URL; ?>">Bug Tracker</a>
+    <a class="navbar-brand h1 mb-0" href="<?php echo SITE_URL; ?>" style="padding-right: 1.5rem;">Bug Tracker</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto">
+            <!-- Link to main page of app -->
 
+            <?php
+                //retrieve the open and resolved status from the database
+                $sql = 'SELECT DISTINCT(bug_status) FROM bug_reports
+                        GROUP BY bug_status';
+          
+                //prepare statement
+                $stmt = $mysqli->prepare($sql);
+      
+                //execute sql statement
+                $stmt->execute();
+      
+                //get the results from the query
+                $categories = $stmt->get_result();
+
+                //loop results dynamically to nav bar
+                while($row = $categories->fetch_assoc()) : ?>
+                
+                <li class="nav-item active">
+
+                <?php echo '<a class="nav-link" href="'.  SITE_URL  . 'cat.php?cat_id=' . $row['bug_status'] .'">Open Bugs</a></li>';
+          
+                endwhile; ?>
+    </div>  
 
             <!-- // If the user_id is set, the user is logged in and show the logout button. 
         // Else, show the login form -->
