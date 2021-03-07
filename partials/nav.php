@@ -7,29 +7,16 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mr-auto">
             <!-- Link to main page of app -->
-
-            <?php
-                //retrieve the open and resolved status from the database
-                $sql = 'SELECT DISTINCT(bug_status) FROM bug_reports
-                        GROUP BY bug_status';
-          
-                //prepare statement
-                $stmt = $mysqli->prepare($sql);
-      
-                //execute sql statement
-                $stmt->execute();
-      
-                //get the results from the query
-                $categories = $stmt->get_result();
-
-                //loop results dynamically to nav bar
-                while($row = $categories->fetch_assoc()) : ?>
                 
                 <li class="nav-item active">
-
-                <?php echo '<a class="nav-link" href="'.  SITE_URL  . 'cat.php?cat_id=' . $row['bug_status'] .'">Open Bugs</a></li>';
-          
-                endwhile; ?>
+                   <?php echo '<li><a class="nav-link" href="' . SITE_URL . 'cat.php?cat_id=0">Open Bugs</a></li>'; ?>
+                </li>
+                <li>
+                <li>
+                   <?php echo '<li><a class="nav-link" href="' . SITE_URL . 'cat.php?cat_id=1">Resolved Bugs</a></li>'; ?>
+                </li>
+                <li>
+   
     </div>  
 
             <!-- // If the user_id is set, the user is logged in and show the logout button. 
