@@ -11,6 +11,9 @@
     $loginPassword = $_POST['loginPassword'];
 
 
+    var_dump($_POST);
+
+
     // 3. Redirect to the homepage if there is no post data
     if(!isset($_POST['loginSubmit'])){
 
@@ -61,9 +64,14 @@
         if(session_status() == 1){
 
             session_start();
+
         }
 
+        
+
         $_SESSION['user_id'] = $record['user_id'];
+
+      
 
         // Redirect the homepage
         header('Location: ' . SITE_URL . '?msg=loginSuccess');

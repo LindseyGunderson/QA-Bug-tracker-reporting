@@ -6,6 +6,11 @@
     // Add a new row to the database
     require_once('app/connect.php');
 
+        // Start the PHP session
+        if(session_status() == 1) {
+            session_start();
+        }
+    
     
     // Include the headter
     include('./partials/header.php'); 
@@ -29,6 +34,57 @@
     <!-- Navigation -->
     <?php require_once('partials/nav.php'); ?>
     <!-- End Navigation -->
+
+
+<!-- Show the sign up form, if the user is not logged in -->
+<?php   if(!isset($_SESSION['user_id'])):  ?>
+    <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="alert mt-5 alert-warning">
+                        <?php  
+
+                            // custom function to print messages to screen
+                            lg_msgs($_GET['cat_id']);
+
+                        ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+  <!-- Sign Up Form -->
+  <div class="container"> 
+            <div class="row justify-content-center">
+                <div class="col-6">        
+                    <div class="card mb-5 mt-5">
+                        <div class="card-body"> 
+                            <h3 class="mb-5">Sign Up</h3>                
+                            <form action="./app/signup.php" method="POST">
+                                <div class="form-group">
+                                    <label for="signupEmail">Email address</label>
+                                    <input type="text" class="form-control" id="signupEmail" name="signupEmail" placeholder="Enter email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="signupPassword">Password</label>
+                                    <input type="password" class="form-control" id="signupPassword" name="signupPassword" placeholder="Password">
+                                </div>
+                                <div class="form-group">
+                                    <label for="signupPassword">Re-type Password</label>
+                                    <input type="password" class="form-control" id="signupPasswordConfirm" name="signupPasswordConfirm" placeholder="Password">
+                                </div>                                
+                                <input name="signupSubmit" type="submit" class="btn btn-primary" value="Sign Up">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>    
+        </div>
+
+<!-- if the user is logged in, show their todo list items -->
+ <?php else: ?>
+        </div>
 
     <div class="container"> 
 
@@ -94,7 +150,10 @@
 
             </div>
             <!-- End active notes -->
-</div>
+    </div>
+
+    <?php endif; ?>     
+    <!-- include footer -->
 
                     <!-- include footer -->
     <?php include('./partials/footer.php'); ?>

@@ -63,7 +63,7 @@
     }
 
 
-    //10. If everything is good to go, insert the new user into the databse
+    //10. If everything is good to go, insert the new user into the database
     $sql = 'INSERT INTO users(user_email, user_password) VALUES (?, ?)';
 
     $stmt = $mysqli->prepare($sql);

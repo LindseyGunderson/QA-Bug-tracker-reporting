@@ -97,10 +97,9 @@
             echo 'Account created: Please login';
             break;
             
+        case "0":
         case "1":
-        case "2":
-        case "3":
-            echo 'Error: Please sign up or login to view notes';
+            echo 'Error: Please sign up or login.';
             break;
 
     default:

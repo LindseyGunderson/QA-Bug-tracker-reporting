@@ -7,6 +7,15 @@
     require_once('app/connect.php');
 
     
+    // Start the PHP session
+    if(session_status() == 1) {
+
+        session_start();
+
+    }
+
+
+    
     // Include the headter
     include('./partials/header.php'); 
 
@@ -163,7 +172,7 @@
 
 
             
-            <!-- Display Active Bugs with bootstrap -->
+            <!-- Display Recent Bugs -->
             <h2 class="mt-5 mb-5">Recently Added Issues</h2>
             <div class="row mb-6">
 
@@ -197,7 +206,7 @@
                 <?php endwhile; /// ends DB results loop ?>
 
             </div>
-            <!-- End active notes -->
+            <!-- End recent bugs -->
     <?php endif; ?>   
 
                     <!-- include footer -->

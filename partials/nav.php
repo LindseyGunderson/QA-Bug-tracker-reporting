@@ -22,7 +22,7 @@
             <!-- // If the user_id is set, the user is logged in and show the logout button. 
         // Else, show the login form -->
         <?php if(isset($_SESSION['user_id'])): ?>
-            <a href="<?php echo SITE_URL . 'app/logout.php'; ?>" class="btn btn-primary" >Logout</a>
+            <a href="<?php echo SITE_URL . 'app/logout.php?logout=1'; ?>" class="btn btn-primary" >Logout</a>
 
            <?php else: ?>
 

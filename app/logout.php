@@ -15,6 +15,7 @@
         session_destroy();
     }
 
+
     // Redirect the page to the homepage and logout the user
     header('Location: ' . SITE_URL);
     
