@@ -73,7 +73,7 @@
                         <?php echo '<a class="float-right btn btn-info  " href="app/complete.php?id='. h($row['bug_id']).'">Resolve</a>'; ?>
 
                         <!-- Display the category for active notes -->
-                        <!-- <h3 class="card-header"><?php echo h($row['bug_severity']) ?></h3> -->
+                        <span class="badge <?php echo lg_severityBG(h($row['bug_severity'])); ?>"  style="padding: 0.5rem; margin-left: 0.5rem; font-size: 0.8rem;"><?php echo lg_severityResult(h($row['bug_severity'])); ?></span></p>
 
                         <!-- Display the title for the active notes -->
                         <div class="card-header"><h3 ><?php echo h($row['bug_title']) ?> </h3></div>

@@ -134,6 +134,7 @@
 
             <?php      while($row = $result->fetch_assoc()) : ?>
 
+
                 <div class="col-md-6 ">
                     <div class="card mb-5 ">
                         <div class="card-body border-success">
@@ -143,7 +144,7 @@
 
                             <!-- Display the issue number of the bug -->
                             <p class="text-dark" style="font-weight: bold;">Issue # <?php echo  h($row['bug_id']) ?>
-                            <span class="badge bg-success text-light" style="padding: 0.5rem; margin-left: 0.5rem; font-size: 0.8rem;">Low Severity</span></p>
+                            <span class="badge <?php echo lg_severityBG(h($row['bug_severity'])); ?>"  style="padding: 0.5rem; margin-left: 0.5rem; font-size: 0.8rem;"><?php echo lg_severityResult(h($row['bug_severity'])); ?></span></p>
 
                             <!-- Display the title for the open bug -->
                             <h3 class="card-header "><?php echo h($row['bug_title']) ?> </h3>
