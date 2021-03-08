@@ -21,16 +21,16 @@ Just a note, in order to connect to your database, you will need to add your cre
 ## Overview Images
 
 ### Login Page
-[login.jpg](https://postimg.cc/34HX28Dw)
+[![login.jpg](https://i.postimg.cc/FRYT51r0/login.jpg)](https://postimg.cc/34HX28Dw)
 
 ### Main Page After Login
-[main-page.jpg](https://postimg.cc/fkCc0hWw)
+[![main-page.jpg](https://i.postimg.cc/qMVjSk9C/main-page.jpg)](https://postimg.cc/fkCc0hWw)
 
 ### Add A New Bug/Issue
-[added-bug.jpg](https://postimg.cc/2qnvksXN)
+[![added-bug.jpg](https://i.postimg.cc/3wcZB7XN/added-bug.jpg)](https://postimg.cc/2qnvksXN)
 
 ### Add A Comment To A Bug
-[added-comment.jpg](https://postimg.cc/620vRdXH)
+[![added-comment.jpg](https://i.postimg.cc/FztgMZnQ/added-comment.jpg)](https://postimg.cc/620vRdXH)
 
 ### Resolve/Re-Open Bug
 [![re-open.jpg](https://i.postimg.cc/1XpcsqLV/re-open.jpg)](https://postimg.cc/4Hxh1m4X)
