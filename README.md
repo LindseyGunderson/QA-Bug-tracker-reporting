@@ -5,6 +5,7 @@
 
 - Description
 - Installation
+- Overview
 
 
 ## Description
@@ -16,3 +17,20 @@ In order this application to run, you will need to connect to a MySQL server. MA
 
 ### Connections
 Just a note, in order to connect to your database, you will need to add your credentials to `inc/config.php`. Make all variables match your development environment.
+
+## Overview Images
+
+### Login Page
+[login.jpg](https://postimg.cc/34HX28Dw)
+
+### Main Page After Login
+[main-page.jpg](https://postimg.cc/fkCc0hWw)
+
+### Add A New Bug/Issue
+[added-bug.jpg](https://postimg.cc/2qnvksXN)
+
+### Add A Comment To A Bug
+[added-comment.jpg](https://postimg.cc/620vRdXH)
+
+### Resolve/Re-Open Bug
+[re-open.jpg](https://postimg.cc/4Hxh1m4X)
