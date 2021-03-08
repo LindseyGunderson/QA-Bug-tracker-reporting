@@ -33,4 +33,4 @@ Just a note, in order to connect to your database, you will need to add your cre
 [added-comment.jpg](https://postimg.cc/620vRdXH)
 
 ### Resolve/Re-Open Bug
-![re-open.jpg](https://postimg.cc/4Hxh1m4X)
+[![re-open.jpg](https://i.postimg.cc/1XpcsqLV/re-open.jpg)](https://postimg.cc/4Hxh1m4X)
