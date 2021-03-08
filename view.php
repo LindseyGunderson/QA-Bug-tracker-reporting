@@ -124,7 +124,7 @@
                                 <!-- Form note description -->
                                 <div class="form-group">
                                     <input type="hidden" name="currentDate" value="<?php echo $today?>" readonly="readonly">
-                                    <input type="hidden" name="id" value="<?php echo h($row['bug_id']) ?>">
+                                    <input type="hidden" name="id" value="<?php echo h($_GET['id']) ?>">
                                     <textarea class="form-control" name="commentMsg" id="commentMsg" placeholder="Enter your comment..."></textarea>
                                 </div>
                                 

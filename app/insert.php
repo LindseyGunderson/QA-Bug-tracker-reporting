@@ -39,7 +39,11 @@
 
         if (isset($_POST['commentMsg']) && !empty($_POST['commentMsg'])) {
         
+            $commentURL = SITE_URL . 'view.php?id=' . $_POST['id'];
+
             var_dump($_POST);
+
+            var_dump($commentURL);
 
             //define variables for $_POST
             $comment_bug_id = $_POST['id'];
@@ -58,7 +62,7 @@
             //Execute the query and inserted into database
             $stmt->execute();
 
-            header('Location: ' . SITE_URL .'view.php?id=' . $_POST['id']);
+            header("Location: $commentURL");
 
         }
 

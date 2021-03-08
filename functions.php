@@ -74,7 +74,7 @@
             break;
 
         case "loginSuccess":
-            echo 'Login Success: Good luck on all your notes and get them done!';
+            echo 'Login Success: Welcome!';
             break;
 
         case "errorSignUpEmptyFields":
