@@ -98,7 +98,7 @@
     <div class="container"> 
             <h1 class="mt-5 mb-5">Bug Report</h1>
 
-            <!-- Create New Notes -->
+            <!-- Create Bugs -->
             <h2 class="mt-5 mb-5">Add New Bug</h2>
 
             <div class="row">
@@ -106,7 +106,7 @@
                     <form id="bugForm" action="app/insert.php" method="POST">
                         <div class="form-group">
 
-                        <!-- Form Category -->
+                        <!-- Form Severity -->
                             <label for="cat">Severity</label>
                             <select class="form-control" name="bugSeverity" id="bugSeverity">
                                 <option value="1">Low</option>
@@ -115,13 +115,13 @@
                             </select>
                         </div>
 
-                            <!-- Form note title -->
+                            <!-- Form Bug Title -->
                             <div class="form-group">
                                 <label for="bugTitle">Bug Title</label>
                                 <input type="text" class="form-control" id="bugTitle" name="bugTitle">
                             </div>
                                 
-                                <!-- Form note description -->
+                                <!-- Form Bug Description -->
                                 <div class="form-group">
                                     <label for="description">Bug Description</label>
                                     <textarea class="form-control" name="bugDescription" id="bugDescription"></textarea>
@@ -129,7 +129,7 @@
                                 
                                 <div class="row">
 
-                                    <!-- Form due date -->
+                                    <!-- Form Bug Date Created -->
                                     <div class="form-group col-md-6">
                                         <label for="date">Date</label>
                                         <input class="form-control" type="date" id="bugDate" name="bugDate">
@@ -137,7 +137,7 @@
 
                                     <div class="form-group col-md-6">
 
-                                    <!-- Form status -->
+                                    <!-- Form Bug Status -->
                                         <label for="status">Status</label>
                                         <select id="status" name="status" class="form-control">
                                                 <option value="0">Active</option>
@@ -150,7 +150,6 @@
                     </form>
                     </div>
                 </div>
-
          <!-- End of form contents -->
 
 
@@ -193,7 +192,6 @@
                             <!-- Display the title for the open bug -->
                             <h3 class="card-header "><?php echo h($row['bug_title']) ?> </h3>
                             
-
                             <!-- Display the date for the bug date -->
                             <p class="card-title" style="padding-top: 1rem; "><strong>Date: </strong><?php echo  h($row['bug_created_date']) ?>
 

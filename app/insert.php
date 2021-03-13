@@ -41,17 +41,13 @@
         
             $commentURL = SITE_URL . 'view.php?id=' . $_POST['id'];
 
-            var_dump($_POST);
-
-            var_dump($commentURL);
-
             //define variables for $_POST
             $comment_bug_id = $_POST['id'];
             $comment_msg = $_POST['commentMsg'];
             $comment_date = $_POST['currentDate'];
 
 
-            // //Prepare SQL query for insert
+            //Prepare SQL query for insert
             $sql = 'INSERT INTO bug_comments(comment_bug_id, comment_msg, comment_date_created) VALUES (?, ?, ?)';
 
             $stmt = $mysqli->prepare($sql);

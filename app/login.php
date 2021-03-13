@@ -67,8 +67,7 @@
 
         }
 
-        
-
+        // make the users session = to their id
         $_SESSION['user_id'] = $record['user_id'];
 
       

@@ -39,6 +39,7 @@
 
     <?php         
     
+    // select statement to query both the bug details and comments associated 
             $sql = "SELECT * FROM bug_reports
                     JOIN bug_comments
                     ON bug_reports.bug_id = bug_comments.comment_bug_id
@@ -59,6 +60,7 @@
 
     ?>
 
+<!-- Print the bug details to the screen -->
 <div class="container"> 
         <h2 class="mt-5 mb-5">Bug Issue # <?php echo $_GET['id'] ?></h2>
         <div class="row mb-6">
@@ -69,7 +71,7 @@
                 <div class="card">
                     <div class="card-body border-success">
 
-                        <!-- Archive button connected to the ID once clicked -->
+                        <!-- Resolve button connected to the ID once clcked -->
                         <?php echo '<a class="float-right btn btn-info  " href="app/complete.php?id='. h($row['bug_id']).'">Resolve</a>'; ?>
 
                         <!-- Display the category for active notes -->
@@ -91,10 +93,13 @@
 
 
     <?php      
+
+            // check if there are comments
             if (mysqli_num_rows($comments) !== 0) {
 
                 while($row = $comments->fetch_assoc()) : ?>
 
+                <!-- display the comments if there are comments -->
                 <div class="comment card-body">
                     <div class="card-body">
                         <div>
@@ -110,18 +115,22 @@
 
 
                     <?php  
-                endwhile; /// ends DB results loop
+                endwhile; /// ends DB results loop for comments
             } ?>
 
-        <h5 class="mt-5 mb-5">Post Comment</h5>
 
-       
+            <!-- else there will be no comments to show -->
+
+
+
+        <!-- Form for posting comments -->
+        <h5 class="mt-5 mb-5">Post Comment</h5>
 
             <div class="row">
                 <div class="col-md-4">
                     <form id="commentForm" action="app/insert.php" method="POST">
                                 
-                                <!-- Form note description -->
+                                <!-- Comment note description -->
                                 <div class="form-group">
                                     <input type="hidden" name="currentDate" value="<?php echo $today?>" readonly="readonly">
                                     <input type="hidden" name="id" value="<?php echo h($_GET['id']) ?>">
@@ -131,8 +140,8 @@
                                 <div class="row">
                                     <button type="submit" class="btn btn-primary">Add New Comment</button>
                                 </div>
-                            <!-- Submit button -->
                             
                     </form>
                     </div>
             </div>
+            <!-- End of Comment form -->

@@ -17,6 +17,7 @@
     define( 'SITE_URL', siteURL() );
 
 
+    // custom function that show the severity associated with the number result from the database
     function lg_severityResult($severity){
 
         switch($severity){
@@ -39,6 +40,7 @@
 
     }
 
+    // Add a badge and colour to the Severity of the bug
     function lg_severityBG($severityBG){
 
         switch($severityBG){

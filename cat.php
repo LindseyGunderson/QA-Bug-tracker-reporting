@@ -110,7 +110,7 @@
              ?>
 
             
-            <!-- Display Active Bugs with bootstrap -->
+            <!-- Display Open Bugs with bootstrap -->
             <h2 class="mt-5 mb-5"><?php echo $title ?></h2>
             <div class="row mb-6">
 
@@ -123,6 +123,7 @@
                             <!-- Resolve button connected to the ID once clicked -->
                             <?php if($_GET['cat_id'] == 0) : echo '<a name="resolve" class="float-right btn btn-info  " href="app/complete.php?id='. h($row['bug_id']).'" >Resolve</a>';
                                     
+                                    // We show the Re-Open button
                                     else:
                                     
                                     echo '<a name="reopen" class="float-right btn btn-danger" href="app/complete.php?status=reopen&id='. h($row['bug_id']).'" >Re-Open</a>';

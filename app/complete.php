@@ -10,7 +10,7 @@
 
     if(isset($_GET['status']) == 'reopen'){
 
-          //Prepare SQL query for update, update the status where it is equal to the note_id
+          //Prepare SQL query for update, update the status where it is equal to the bug_id
         $sql = 'UPDATE bug_reports SET bug_status = 0 WHERE bug_id = ?';
 
         $stmt = $mysqli->prepare($sql);
