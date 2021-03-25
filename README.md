@@ -1,4 +1,4 @@
-# QA-Bug-tracker-reporting
+# QA-Bug-tracker
  This is a QA bug tracking application, where users can track bugs and leave comments to address the bugs.
 
 ## Legend
