@@ -8,8 +8,7 @@
 
 
    if(isset($_POST['newBug'])){
-
-        // var_dump($_POST);
+       
 
         //define variables for $_POST
         $bug_severity = $_POST['bugSeverity'];
